@@ -79,18 +79,18 @@ public class State {
 	}
 
 	public boolean isEquivalent(State s2) {
-		Boolean b = equivalence.get(s2);
-		if( b == null ) {
-			return isEquivalent(s2,new ArrayList<State>(),new ArrayList<State>());
-		} else {
-			return b;
-		}
+		return isEquivalent(s2,new ArrayList<State>(),new ArrayList<State>());
 	}
 
 	private boolean isEquivalent(State s2, ArrayList<State> v1, 
 									ArrayList<State> v2) {
 		// System.out.println(name + " vs " + s2.name);
 		// System.out.println(isFinal + " vs " + s2.isFinal);
+		Boolean b = equivalence.get(s2);
+		if( b != null ) {
+			return b;
+		}
+		
 		if( this.isFinal ^ s2.isFinal ) {
 			System.out.println(this.name + " and " + s2.name + " are not both acceptors or non-acceptors.");
 			this.equivalence.put(s2,false);

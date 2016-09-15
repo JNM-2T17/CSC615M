@@ -8,6 +8,7 @@ public class State {
 	private HashMap<String,String> output;
 	private String outputSymbol;
 	private boolean isFinal;
+	private HashMap<State,Boolean> equivalence;
 
 	public State(String name) {
 		this.name = name;
@@ -15,6 +16,7 @@ public class State {
 		output = new HashMap<String,String>();
 		outputSymbol = "";
 		isFinal = false;
+		equivalence = new HashMap<State,Boolean>();
 	}
 
 	public State(String name,String outputSymbol) {
@@ -23,6 +25,7 @@ public class State {
 		output = new HashMap<String,String>();
 		this.outputSymbol = outputSymbol;
 		isFinal = false;
+		equivalence = new HashMap<State,Boolean>();
 	}
 
 	public State(String name,String outputSymbol, boolean isFinal) {
@@ -31,6 +34,7 @@ public class State {
 		output = new HashMap<String,String>();
 		this.outputSymbol = outputSymbol;
 		isFinal = true;
+		equivalence = new HashMap<State,Boolean>();
 	}
 
 	public String getName() {
@@ -47,15 +51,18 @@ public class State {
 
 	public void setFinal(boolean isFinal) {
 		this.isFinal = isFinal;
+		equivalence.clear();
 	}
 
 	public void setTransition(String input,State target) {
 		transition.put(input,target);
+		equivalence.clear();
 	}
 
 	public void setTransition(String input,State target,String output) {
 		transition.put(input,target);
 		this.output.put(input,output);
+		equivalence.clear();
 	}
 
 	public State getTransition(String input) {
@@ -72,7 +79,12 @@ public class State {
 	}
 
 	public boolean isEquivalent(State s2) {
-		return isEquivalent(s2,new ArrayList<State>(),new ArrayList<State>());
+		Boolean b = equivalence.get(s2);
+		if( b == null ) {
+			return isEquivalent(s2,new ArrayList<State>(),new ArrayList<State>());
+		} else {
+			return b;
+		}
 	}
 
 	private boolean isEquivalent(State s2, ArrayList<State> v1, 
@@ -81,6 +93,8 @@ public class State {
 		// System.out.println(isFinal + " vs " + s2.isFinal);
 		if( this.isFinal ^ s2.isFinal ) {
 			System.out.println(this.name + " and " + s2.name + " are not both acceptors or non-acceptors.");
+			this.equivalence.put(s2,false);
+			s2.equivalence.put(this,false);
 			return false;
 		} else if( s2.name.compareTo(name) < 0 ) {
 			v1.add(s2);
@@ -124,10 +138,15 @@ public class State {
 				} else {
 					System.out.println(name + " !~ " + s2.name);
 				}
+				this.equivalence.put(s2,false);
+				s2.equivalence.put(this,false);
 				return false;
 			}
 		}
 
+		this.equivalence.put(s2,true);
+		s2.equivalence.put(this,true);
+			
 		return true;
 	}
 }

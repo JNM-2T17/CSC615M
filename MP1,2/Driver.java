@@ -1,29 +1,29 @@
 public class Driver {
 	public static void main(String[] args) {
-		// FSM m1 = new FSM("Odd1");
-		// FSM m2 = new FSM("Odd2");
+		FSM m1 = new FSM("Odd1");
+		FSM m2 = new FSM("Odd2");
 
-		// State m1s1 = new State("A");
-		// State m1s2 = new State("B");
-		// m1s2.setFinal(true);
-		// m1s1.setTransition("0",m1s2);
-		// m1s2.setTransition("0",m1s1);
+		State m1s1 = new State("A");
+		State m1s2 = new State("B");
+		m1s2.setFinal(true);
+		m1s1.setTransition("0",m1s2);
+		m1s2.setTransition("0",m1s1);
 
-		// m1.addState(m1s1);
-		// m1.addState(m1s2);
-		// m1.setStartState(m1s1);
+		m1.addState(m1s1);
+		m1.addState(m1s2);
+		m1.setStartState(m1s1);
 
-		// State m2s1 = new State("A");
-		// State m2s2 = new State("B");
-		// m2s2.setFinal(true);
-		// m2s1.setTransition("0",m2s2);
-		// m2s2.setTransition("0",m2s1);
+		State m2s1 = new State("A");
+		State m2s2 = new State("B");
+		m2s2.setFinal(true);
+		m2s1.setTransition("0",m2s2);
+		m2s2.setTransition("0",m2s1);
 
-		// m2.addState(m2s1);
-		// m2.addState(m2s2);
-		// m2.setStartState(m2s1);
+		m2.addState(m2s1);
+		m2.addState(m2s2);
+		m2.setStartState(m2s1);
 
-		// System.out.println(m1.isEquivalent(m2));
+		System.out.println(m1.isEquivalent(m2));
 
 		FSM consec1 = new FSM("Consec1");
 
@@ -79,6 +79,8 @@ public class Driver {
 
 		consec2.setStartState(c2A);
 
+		System.out.println(c2E.isEquivalent(c2C));
+		System.out.println(c2B.isEquivalent(c2F));
 		System.out.println(consec1.isEquivalent(consec2));
 		System.out.println("Consec1: " + consec1.run("0101",false));
 		System.out.println("Consec2: " + consec2.run("0101",false));

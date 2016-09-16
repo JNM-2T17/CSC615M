@@ -86,23 +86,25 @@ public class State {
 									ArrayList<State> v2) {
 		// System.out.println(name + " vs " + s2.name);
 		// System.out.println(isFinal + " vs " + s2.isFinal);
-		Boolean b = equivalence.get(s2);
-		if( b != null ) {
-			return b;
-		}
-		
-		if( this.isFinal ^ s2.isFinal ) {
-			System.out.println(this.name + " and " + s2.name + " are not both acceptors or non-acceptors.");
-			this.equivalence.put(s2,false);
-			s2.equivalence.put(this,false);
-			return false;
-		} else if( s2.name.compareTo(name) < 0 ) {
+		if( s2.name.compareTo(name) < 0 ) {
 			v1.add(s2);
 			v2.add(this);
 		} else if( s2.name.compareTo(name) > 0 ) {
 			v1.add(this);
 			v2.add(s2);
-		} 
+		} else {
+			return true;
+		}
+
+		Boolean b = equivalence.get(s2);
+		if( b != null ) {
+			return b;
+		} else if( this.isFinal ^ s2.isFinal ) {
+			System.out.println(this.name + " and " + s2.name + " are not both acceptors or non-acceptors.");
+			this.equivalence.put(s2,false);
+			s2.equivalence.put(this,false);
+			return false;
+		}
 
 		for(Entry<String,State> entry : transition.entrySet() ) {
 			String alpha = entry.getKey();

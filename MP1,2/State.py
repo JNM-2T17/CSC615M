@@ -32,15 +32,25 @@ class State:
 	def checkEquiv(self,s2,v1,v2):
 		# print(self.name,"vs",s2.name)
 		if self.name < s2.name:
+			# print(self.name," vs ",s2.name)
 			v1.append(self)
 			v2.append(s2)
 		elif self.name > s2.name:
+			# print(s2.name," vs ",self.name)
 			v1.append(s2)
 			v2.append(self)
 		else:
+			# print(self.name," vs ",s2.name)
 			return True
 
 		if self.isFinal != s2.isFinal:
+			return False
+
+		# print(self.output,"vs",s2.output)
+		if self.output != s2.output:
+			# print("g(%s) = %s != g(%s) = %s" % \
+			# 		(self.name,moore1,s2.name,moore2))
+			# print("%s is not equivalent to %s" % (self.name,s2.name))
 			return False
 
 		for k,v in self.trans.items():
@@ -58,16 +68,9 @@ class State:
 					found = True
 
 			if not found:
-				moore1 = self.output
-				moore2 = s2.output
 				mealy1 = self.getOutput(k)
 				mealy2 = s2.getOutput(k)
-				if moore1 != moore2:
-					# print("g(%s) = %s != g(%s) = %s" % \
-					# 		(self.name,moore1,s2.name,moore2))
-					# print("%s is not equivalent to %s" % (self.name,s2.name))
-					return False
-				elif mealy1 != mealy2:
+				if mealy1 != mealy2:
 					# print("g(%s,%s) = %s != g(%s,%s) = %s" % \
 					# 		(self.name,k,mealy1,s2.name,k,mealy2))
 					# print("%s is not equivalent to %s" % (self.name,s2.name))

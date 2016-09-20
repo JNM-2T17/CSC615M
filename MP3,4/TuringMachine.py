@@ -5,6 +5,8 @@ class TuringMachine:
 		self.name = name
 		self.states = {}
 		self.blank = "B"
+		self.defaultNext = []
+		self.nextTM = {}
 
 	def addState(self,state):
 		newName = self.name + "~" + state.name
@@ -31,6 +33,7 @@ class TuringMachine:
 	def process(self,string):
 		state = self.start
 		i = 0
+		fallback = 0
 		if len(string) == 0:
 			string = self.blank
 		while True:
@@ -46,7 +49,21 @@ class TuringMachine:
 					i = 0
 				elif i >= len(string):
 					string += self.blank
+			elif fallback < len(self.defaultNext):
+				state = self.defaultNext[fallback]
+				fallback += 1
 			else:				
 				return (state.isFinal,self.cleanString(string))
 
 		return (state.isFinal,self.cleanString(string))
+
+	def combine(self,tm2,symbol=None):
+		if symbol == None:
+			self.defaultNext.append(tm2.start)
+		else:
+			for k,v in self.states.items():
+				if v.getTransition(symbol) == None:
+					v.setTransition(symbol,tm2.start,symbol,0)
+
+		for k,v in tm2.states.items():
+			self.addState(v)

@@ -7,7 +7,7 @@ class State:
 		self.isFinal = isFinal
 
 	def setOutput(self,output,input=None):
-		if input == None:
+		if input is None:
 			self.output = output
 		else:
 			self.outputs[input] = output
@@ -16,7 +16,7 @@ class State:
 		self.trans[input] = target
 
 	def getOutput(self,input=None):
-		if input == None:
+		if input is None:
 			return self.output
 		elif input in self.outputs:
 			return self.outputs[input]
@@ -63,20 +63,31 @@ class State:
 				mealy1 = self.getOutput(k)
 				mealy2 = s2.getOutput(k)
 				if moore1 != moore2:
-					print("g(%s) = %s != g(%s) = %s" % \
-							(self.name,moore1,s2.name,moore2))
-					print("%s is not equivalent to %s" % (self.name,s2.name))
+					# print("g(%s) = %s != g(%s) = %s" % \
+					# 		(self.name,moore1,s2.name,moore2))
+					# print("%s is not equivalent to %s" % (self.name,s2.name))
 					return False
 				elif mealy1 != mealy2:
-					print("g(%s,%s) = %s != g(%s,%s) = %s" % \
-							(self.name,k,mealy1,s2.name,k,mealy2))
-					print("%s is not equivalent to %s" % (self.name,s2.name))
+					# print("g(%s,%s) = %s != g(%s,%s) = %s" % \
+					# 		(self.name,k,mealy1,s2.name,k,mealy2))
+					# print("%s is not equivalent to %s" % (self.name,s2.name))
 					return False
 				elif not t1.checkEquiv(t2,v1,v2):
-					print("%s is not equivalent to %s" % (self.name,s2.name))
+					# print("%s is not equivalent to %s" % (self.name,s2.name))
 					return False
 
 		return True
 
 	def isEquivalent(self,s2):
 		return self.checkEquiv(s2,[],[])
+
+	def __str__(self):
+		ret = self.name + "\n";
+		if self.output != "":
+			ret += "h(" + self.name + ") = " + self.output + "\n"
+		for k,v in self.trans.items():
+			ret += "f(%s,%s) = %s\n" % (self.name,k,v.name)
+		for k,v in self.outputs.items():
+			ret += "g(%s,%s) = %s\n" % (self.name,k,v)
+
+		return ret

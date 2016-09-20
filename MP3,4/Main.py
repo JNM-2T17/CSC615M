@@ -7,16 +7,14 @@ add1sB = State("B")
 add1sC = State("C")
 add1sD = State("D")
 
-print(add1sA)
-
 add1sA.setTransition("0",add1sA,"0",1)
 add1sA.setTransition("1",add1sA,"1",1)
 add1sA.setTransition("B",add1sB,"B",-1)
 add1sB.setTransition("0",add1sC,"1",-1)
 add1sB.setTransition("1",add1sB,"0",-1)
 add1sB.setTransition("B",add1sC,"1",-1)
-add1sC.setTransition("0",add1sC,"1",-1)
-add1sC.setTransition("1",add1sB,"0",-1)
+add1sC.setTransition("0",add1sC,"0",-1)
+add1sC.setTransition("1",add1sC,"1",-1)
 
 add1.addState(add1sA)
 add1.addState(add1sB)

@@ -38,7 +38,7 @@ class TuringMachine:
 			string = self.blank
 		while True:
 			transition = state.getNextState(string[i])
-			if transition != None:
+			if transition is not None:
 				state = transition[0]
 				# print(state,transition[1:],string)
 				string = string[0:i] + transition[1] + \

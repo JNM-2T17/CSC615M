@@ -1,0 +1,7 @@
+A B C D
+0 1
+A B
+A:A B C
+B:A D C
+C:A B D
+D:B D D

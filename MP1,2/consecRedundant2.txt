@@ -1,0 +1,9 @@
+A B C D E F
+0 1
+A B
+A B:A C:A
+B D:B E:A
+C F:A D:B
+D D:B D:B
+E B:A D:B
+F D:B C:A

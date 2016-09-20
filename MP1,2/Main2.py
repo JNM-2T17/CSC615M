@@ -6,7 +6,7 @@ while True:
 	for ctr in range(2):
 		ok = False
 		while not ok:
-			filename = input("Enter filename for machine %d:" % (ctr + 1))
+			filename = input("Enter filename for machine %d: " % (ctr + 1))
 			try:
 				file = open(filename,"r")
 				ok = True
@@ -84,9 +84,6 @@ while True:
 
 	if fsm[0].isEquivalent(fsm[1]):
 		print(fsm[0].name,"and",fsm[1].name,"are equivalent.")
-		for s1 in fsm[0].states.values():
-			for s2 in fsm[1].states.values():
-				if s1.isEquivalent(s2):
-					print(s1.name[len(fsm[0].name) + 1:],"~",s2.name[len(fsm[1].name) + 1:])
+		fsm[0].printEquivalence(fsm[1])
 	else:
 		print(fsm[0].name,"and",fsm[1].name,"are not equivalent.")

@@ -66,16 +66,14 @@ class State:
 			for i in range(len(v1)):
 				if t1 == v1[i] and t2 == v2[i]:
 					found = True
-
-			if not found:
-				mealy1 = self.getOutput(k)
-				mealy2 = s2.getOutput(k)
-				if mealy1 != mealy2:
-					# print("g(%s,%s) = %s != g(%s,%s) = %s" % \
-					# 		(self.name,k,mealy1,s2.name,k,mealy2))
-					# print("%s is not equivalent to %s" % (self.name,s2.name))
-					return False
-				elif not t1.checkEquiv(t2,v1,v2):
+			mealy1 = self.getOutput(k)
+			mealy2 = s2.getOutput(k)
+			if mealy1 != mealy2:
+				# print("g(%s,%s) = %s != g(%s,%s) = %s" % \
+				# 		(self.name,k,mealy1,s2.name,k,mealy2))
+				# print("%s is not equivalent to %s" % (self.name,s2.name))
+				return False
+			if not found and not t1.checkEquiv(t2,v1,v2):
 					# print("%s is not equivalent to %s" % (self.name,s2.name))
 					return False
 

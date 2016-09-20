@@ -4,7 +4,7 @@ from FSM import *
 while True:
 	ok = False
 	while not ok:
-		filename = input("Enter filename:")
+		filename = input("Enter filename: ")
 		try:
 			file = open(filename,"r")
 			ok = True

@@ -114,6 +114,7 @@ class TuringMachine:
 			self.addState(v)
 
 	def __str__(self):
+		"""returns string representation of this state"""
 		ret = self.name + "\n\n"
 		for v in sorted(self.states.values(),key=attrgetter("name")):
 			ret += v.__str__() + "\n"

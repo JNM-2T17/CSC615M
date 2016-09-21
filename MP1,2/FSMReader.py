@@ -18,7 +18,7 @@ def readFSM(filename):
 	second line contains s > 0 space separated characters representing S (finite
 	set of stimuli)
 	third line contains r > 0 space separated characters representing R (finite 
-	set of stimuli)
+	set of responses)
 	the next q lines contain s + 1 space separated strings:
 	the first string is the name of the state (for the first such line, it is 
 	the start state). This string may contain a colon (:) followed by a value,

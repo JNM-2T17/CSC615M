@@ -22,6 +22,7 @@ add1.addState(add1sC)
 add1.addState(add1sD)
 add1.setStart(add1sA)
 
+print(add1)
 print(add1.process("111111"))
 print(add1.process("110111"))
 
@@ -89,6 +90,8 @@ ww.addState(wwsI)
 ww.addState(wwsJ)
 
 ww.setStart(wwsA)
+
+print(ww)
 
 print(ww.process("00100010"))
 print(ww.process("001010010"))
@@ -170,7 +173,7 @@ ww3.setStart(ww3sStart)
 
 ww2.combine(ww3)
 
-
+print(ww3)
 print(ww2.process("00100010"))
 print(ww2.process("001010010"))
 print(ww2.process("001010010001010010"))

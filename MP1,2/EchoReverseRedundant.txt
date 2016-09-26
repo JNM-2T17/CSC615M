@@ -1,0 +1,8 @@
+A B C D E
+0 1 X
+0 1 X
+A A:0 A:1 B:X
+B C:1 C:0 A:X
+C E:1 E:0 D:X
+D D:0 A:1 C:X
+E B:1 B:0 A:X

@@ -1,0 +1,11 @@
+a b c d e f g h
+0 1
+0 1
+a f:0 b:0
+b d:0 c:0
+c f:0 e:0
+d g:1 a:0
+e d:0 c:0
+f f:1 b:1
+g g:0 h:1
+h g:1 a:0

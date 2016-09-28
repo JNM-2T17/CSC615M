@@ -1,0 +1,8 @@
+A BD C EG F
+0 1
+0 1
+A BD:0 C:0
+BD C:1 BD:1
+C BD:0 EG:0
+EG F:1 EG:1
+F EG:0 C:0

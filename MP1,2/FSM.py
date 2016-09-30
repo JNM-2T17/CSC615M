@@ -53,6 +53,12 @@ class FSM:
 						done[s2.name] = True
 				self.groups.append(newGroup)
 
+		for i in range(len(self.groups)):
+			self.groups[i] = sorted(self.groups[i],
+									key=operator.attrgetter("name"))
+
+		self.groups = sorted(self.groups,key=lambda x: x[0].name)
+
 	def printEquivalence(self,fsm2=None):
 		"""prints the equivalent states of this FSM within itself or with 
 		another FSM
@@ -67,11 +73,12 @@ class FSM:
 		# if no FSM to compare to
 		if fsm2 is None:
 			i = 1
+
 			for grp in self.groups:
 				if len(grp) > 1:
 					print("Equivalent Group %d: " % (i),end="")
 					start = True
-					for s in sorted(grp,key=operator.attrgetter("name")):
+					for s in grp:
 						if not start:
 							print(",",end="")
 						print(s.name[len(self.name) + 1:],end="")
@@ -93,7 +100,7 @@ class FSM:
 						print("Equivalent Group %d:\n    From %s: " % 
 								(i,self.name.rjust(maxLen)),end="")
 						first = True
-						for s in sorted(grp1,key=operator.attrgetter("name")):
+						for s in grp1:
 							if not first:
 								print(",",end="")
 							print(s.name[len(self.name) + 1:],end="")
@@ -103,7 +110,7 @@ class FSM:
 							% (fsm2.name.rjust(maxLen)),end=""
 						)
 						first = True
-						for s in sorted(grp2,key=operator.attrgetter("name")):
+						for s in grp2:
 							if not first:
 								print(",",end="")
 							print(s.name[len(fsm2.name) + 1:],end="")

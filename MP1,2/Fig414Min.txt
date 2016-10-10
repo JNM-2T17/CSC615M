@@ -1,0 +1,8 @@
+A B C D H
+0 1
+0 1
+A B:0 A:0
+B A:0 C:0
+C D:1 B:0
+D D:1 A:0
+H A:0 D:1

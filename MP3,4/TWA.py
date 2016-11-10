@@ -9,7 +9,7 @@ from operator import attrgetter
 class TWA:
 	"""This class models a Turing machine."""
 
-	def __init__(self,name,blank="#"):
+	def __init__(self,name):
 		"""constructs a basic FSM
 
 		Parameters:
@@ -18,9 +18,9 @@ class TWA:
 		"""
 		self.name = name
 		self.states = {}
-		self.blank = "#"
-		self.defaultNext = []
-		self.nextTWA = {}
+		# self.blank = "#"
+		# self.defaultNext = []
+		# self.nextTWA = {}
 
 	def addState(self,state):
 		"""adds a state to this FSM

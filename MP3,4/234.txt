@@ -4,11 +4,11 @@ start,scanright,a,2
 start,scanright,#,4
 2,scanright,a,3
 2,scanright,#,4
-2,scanright,b,start
-2,scanright,c,start
+2,scanright,b,2
+2,scanright,c,2
 3,scanright,#,4
-3,scanright,b,start
-3,scanright,c,start
+3,scanright,b,3
+3,scanright,c,3
 4,scanleft,a,4
 4,scanleft,b,4
 4,scanleft,c,4

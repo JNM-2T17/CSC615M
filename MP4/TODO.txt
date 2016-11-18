@@ -1,0 +1,21 @@
+[x] shL 
+[x] shR
+[x] copy
+[x] const 
+[x] move m,n
+[x] pushL
+[x] inc
+[x] dec
+[x] add
+[x] mult
+[x] monus/minus
+[x] swap
+
+Bonus:
+[ ] goto
+[ ] gotoEQ
+[ ] gotoNE
+[ ] gotoGE
+[ ] gotoGT
+[ ] gotoLE
+[ ] gotoLT

@@ -22,37 +22,37 @@ def readFile(filename):
 
 			# print("%d - %s" % (id,name))
 
-			if name == "shL":
+			if name.lower() == "shl":
 				count = int(split[2])
 				command = SHL(id,name,[count])
-			elif name == "shR":
+			elif name.lower() == "shr":
 				count = int(split[2])
 				command = SHR(id,name,[count])
-			elif name == "copy":
+			elif name.lower() == "copy":
 				count = int(split[2])
 				command = Copy(id,name,[count])
-			elif name == "const":
+			elif name.lower() == "const":
 				count = int(split[2])
 				command = Const(id,name,[count])
-			elif name == "move":
+			elif name.lower() == "move":
 				count1 = int(split[2])
 				count2 = int(split[3])
-				command = Move(id,name,[count])
-			elif name == "pushL":
+				command = Move(id,name,[count1,count2])
+			elif name.lower() == "pushl":
 				command = PushL(id,name,[])
-			elif name == "inc":
+			elif name.lower() == "inc":
 				command = Inc(id,name,[])
-			elif name == "dec":
+			elif name.lower() == "dec":
 				command = Dec(id,name,[])
-			elif name == "add":
+			elif name.lower() == "add":
 				command = Add(id,name,[])
-			elif name == "mult":
+			elif name.lower() == "mult":
 				command = Mult(id,name,[])
-			elif name == "monus":
+			elif name.lower() == "monus":
 				command = Monus(id,name,[])
-			elif name == "swap":
+			elif name.lower() == "swap":
 				command = Swap(id,name,[])
-			elif name == "HALT":
+			elif name.lower() == "halt":
 				command = Halt(id,name,[])
 
 			if command is not None:

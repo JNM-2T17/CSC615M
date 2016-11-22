@@ -41,7 +41,7 @@ class TuringMachine:
 
 		while curr is not None:
 			ret = curr.do(self.list,self.index)
-			print("After " + curr.id)
+			print("After " + curr.__str__())
 			if ret is None:
 				curr = None
 			else:

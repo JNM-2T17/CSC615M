@@ -3,6 +3,5 @@
 3,swap
 4,shR,1
 5,dec
-6,shL,1
-7,swap
-8,HALT
+6,move,1,1
+7,HALT

@@ -1,0 +1,8 @@
+1,inc
+2,shL,1
+3,swap
+4,shR,1
+5,dec
+6,shL,1
+7,swap
+8,HALT

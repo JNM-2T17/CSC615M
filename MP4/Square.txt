@@ -1,0 +1,5 @@
+1,shR,1
+2,copy,1
+3,shL,2
+4,mult
+5,HALT

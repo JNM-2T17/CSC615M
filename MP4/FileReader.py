@@ -74,7 +74,7 @@ def readFile(filename):
 				count = int(split[2])
 				command = GotoLT(id,name,[count])
 
-			print("%d - %s" % (id,command.__str__()))
+			# print("%d - %s" % (id,command.__str__()))
 
 			if command is not None:
 				tm.addCommand(id,command)

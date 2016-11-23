@@ -167,3 +167,109 @@ class Swap(Command):
 
 	def __str__(self):
 		return "swap"
+
+class Goto(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		return (list,index,self.params[0])
+
+	def __str__(self):
+		return "goto %d" % (self.params[0])
+
+class GotoEQ(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a == b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoEQ %d" % (self.params[0])
+
+class GotoNE(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a != b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoNE %d" % (self.params[0])
+
+class GotoGE(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a >= b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoGE %d" % (self.params[0])
+
+class GotoGT(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a > b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoGT %d" % (self.params[0])
+
+class GotoLE(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a <= b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoLE %d" % (self.params[0])
+
+class GotoLT(Command):
+	def __init__(self,num,id,params=[]):
+		super().__init__(num,id,params)
+
+	def do(self,list,index):
+		a = list[index]
+		b = list[index + 1]
+		list = list[:index]
+		if a < b:
+			return (list,index,self.params[0])
+		else:
+			return (list,index,self.num + 1)
+
+	def __str__(self):
+		return "gotoLT %d" % (self.params[0])

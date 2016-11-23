@@ -12,10 +12,10 @@
 [x] swap
 
 Bonus:
-[ ] goto
-[ ] gotoEQ
-[ ] gotoNE
-[ ] gotoGE
-[ ] gotoGT
-[ ] gotoLE
-[ ] gotoLT
+[x] goto
+[x] gotoEQ
+[x] gotoNE
+[x] gotoGE
+[x] gotoGT
+[x] gotoLE
+[x] gotoLT

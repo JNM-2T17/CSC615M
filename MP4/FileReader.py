@@ -20,8 +20,6 @@ def readFile(filename):
 			if name[-1] == "\n":
 				name = name[:-1]
 
-			# print("%d - %s" % (id,name))
-
 			if name.lower() == "shl":
 				count = int(split[2])
 				command = SHL(id,name,[count])
@@ -54,6 +52,29 @@ def readFile(filename):
 				command = Swap(id,name,[])
 			elif name.lower() == "halt":
 				command = Halt(id,name,[])
+			elif name.lower() == "goto":
+				count = int(split[2])
+				command = Goto(id,name,[count])
+			elif name.lower() == "gotoeq":
+				count = int(split[2])
+				command = GotoEQ(id,name,[count])
+			elif name.lower() == "gotone":
+				count = int(split[2])
+				command = GotoNE(id,name,[count])
+			elif name.lower() == "gotoge":
+				count = int(split[2])
+				command = GotoGE(id,name,[count])
+			elif name.lower() == "gotogt":
+				count = int(split[2])
+				command = GotoGT(id,name,[count])
+			elif name.lower() == "gotole":
+				count = int(split[2])
+				command = GotoLE(id,name,[count])
+			elif name.lower() == "gotolt":
+				count = int(split[2])
+				command = GotoLT(id,name,[count])
+
+			print("%d - %s" % (id,command.__str__()))
 
 			if command is not None:
 				tm.addCommand(id,command)

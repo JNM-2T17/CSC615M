@@ -128,7 +128,8 @@ class Move(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
-		list = list[0:index - self.params[0]] + list[index:]
+		list = list[0:index - self.params[0]] + list[index:index + self.params[1]]
+		index -= self.params[1]
 		return (list,index,self.num + 1)
 
 	def __str__(self):

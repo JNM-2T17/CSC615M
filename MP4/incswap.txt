@@ -4,5 +4,5 @@
 4,shR,1
 5,dec
 6,move,1,1
-7,shL,2
+7,shL,1
 8,HALT

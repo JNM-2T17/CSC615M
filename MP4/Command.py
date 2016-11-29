@@ -27,7 +27,7 @@ class SHR(Command):
 
 	def do(self,list,index):
 		for i in range(self.params[0]):
-			if index == len(list) - 1:
+			if index > len(list) - 1:
 				list.append(0)
 			index += 1
 		return (list,index,self.num + 1)
@@ -40,6 +40,8 @@ class Add(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		list[index] = list[index] + list[index + 1]
 		list[index + 1] = 0
 		return (list,index,self.num + 1)
@@ -52,7 +54,10 @@ class Const(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
-		list.append(self.params[0])
+		if len(list) < index + 1:
+			list.append(self.params[0])
+		else:
+			list[index] = self.params[0]
 		return (list,index,self.num + 1)
 
 	def __str__(self):
@@ -104,6 +109,8 @@ class Monus(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		list[index] = list[index] - list[index + 1]
 		if list[index] < 0:
 			list[index] = 0
@@ -129,7 +136,7 @@ class Move(Command):
 
 	def do(self,list,index):
 		list = list[0:index - self.params[0]] + list[index:index + self.params[1]]
-		index -= self.params[1]
+		index = len(list) - self.params[1]
 		return (list,index,self.num + 1)
 
 	def __str__(self):
@@ -140,6 +147,8 @@ class Mult(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		list[index] = list[index] * list[index + 1]
 		list[index + 1] = 0
 		return (list,index,self.num + 1)
@@ -153,6 +162,7 @@ class PushL(Command):
 
 	def do(self,list,index):
 		list = list[0:index - 1] + list[index:]
+		index = len(list) - 1
 		return (list,index,self.num + 1)
 
 	def __str__(self):
@@ -184,6 +194,8 @@ class GotoEQ(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]
@@ -200,6 +212,8 @@ class GotoNE(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]
@@ -216,6 +230,8 @@ class GotoGE(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]
@@ -232,6 +248,8 @@ class GotoGT(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]
@@ -248,6 +266,8 @@ class GotoLE(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]
@@ -264,6 +284,8 @@ class GotoLT(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
+		if len(list) < index + 2:
+			list.append(0)
 		a = list[index]
 		b = list[index + 1]
 		list = list[:index]

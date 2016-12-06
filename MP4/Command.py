@@ -85,7 +85,10 @@ class Dec(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
-		list.append(list[index] - 1)
+		if len(list) < index + 2:
+			list.append(list[index] - 1)
+		else:
+			list[index + 1] = list[index] - 1
 		index += 1
 		return (list,index,self.num + 1)
 
@@ -97,7 +100,10 @@ class Inc(Command):
 		super().__init__(num,id,params)
 
 	def do(self,list,index):
-		list.append(list[index] + 1)
+		if len(list) < index + 2:
+			list.append(list[index] + 1)
+		else:
+			list[index + 1] = list[index] + 1
 		index += 1
 		return (list,index,self.num + 1)
 

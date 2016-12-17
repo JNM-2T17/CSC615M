@@ -1,0 +1,16 @@
+start,scanright,0,start
+start,scanright,1,2
+start,scanright,#,6
+2,scanright,0,2
+2,scanright,1,start
+2,scanright,#,3
+3,scanleft,0,4
+3,scanleft,#,accept
+4,scanleft,1,5
+5,scanleft,0,3
+6,scanleft,0,6
+6,scanleft,1,6
+6,scanleft,#,7
+7,scanright,1,8
+8,scanright,0,7
+8,scanright,#,accept
